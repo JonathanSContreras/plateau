@@ -112,8 +112,11 @@ weekday = "mon"
 ## The rule set
 
 Each rule reads the history of one `lift@station`, newest session first. The
-first rule that matches decides. Defaults are listed here, and every threshold
-lives in `rules.toml`.
+rules are checked in the order 1, 2, 8, 5, 4, 6, 7, 3, and the first match
+decides. Two exceptions: rule 8 sets the working weight and lets the rest run
+against it, and rule 9 only adds the reach note to whichever decision fires.
+Rule 5 sits before rule 4 because a repeated candidate also meets rule 4's
+condition. Defaults are listed here, and every threshold lives in `rules.toml`.
 
 | # | Condition | Decision |
 |---|---|---|
@@ -272,4 +275,4 @@ Python 3.12, `uv`, Jinja2, WeasyPrint, pytest, hypothesis.
 
 ## License
 
-Not chosen yet.
+MIT. See [LICENSE](LICENSE).
